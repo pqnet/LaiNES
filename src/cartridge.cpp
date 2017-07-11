@@ -57,6 +57,10 @@ void load(const char* fileName)
         case 2:  mapper = new Mapper2(rom); break;
         case 3:  mapper = new Mapper3(rom); break;
         case 4:  mapper = new Mapper4(rom); break;
+        case 52:  mapper = new Mapper4(rom); break;
+        default:
+              fprintf(stderr,"unknown mapper number %d", mapperNum);
+              return;
     }
 
     CPU::power();

@@ -40,7 +40,7 @@ template<bool wr> inline u8 access(u16 addr, u8 v = 0)
     switch (addr)
     {
         case 0x0000 ... 0x1FFF:  r = &ram[addr % 0x800]; if (wr) *r = v; return *r;  // RAM.
-        case 0x2000 ... 0x3FFF:  return PPU::access<wr>(addr % 8, v);                // PPU.
+        case 0x2000 ... 0x3FFF:  return wr?PPU::access_write(addr % 8, v):PPU::access_read(addr%8 , v);                // PPU.
 
         // APU:
         case 0x4000 ... 0x4013:
